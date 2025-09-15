@@ -42,8 +42,7 @@ else:
         # Generate a response using the OpenAI API.
         stream = client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=[
-               messages = [
+            messages=[               
                     {
                       "role": "system",
                       "content": "당신은 똑똑한 조수입니다."
