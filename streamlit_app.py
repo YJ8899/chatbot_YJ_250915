@@ -41,12 +41,29 @@ else:
 
         # Generate a response using the OpenAI API.
         stream = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[
-                {"role": m["role"], "content": m["content"]}
+               messages = [
+                    {
+                      "role": "system",
+                      "content": "당신은 똑똑한 조수입니다."
+                    },
+                    {
+                      "role": "user",
+                      "content": "안녕하세요."
+                    },
+                    {
+                      "role": "user",
+                      "content": "모든 것이 어떻게 진행되고 있나요?"
+                    }
                 for m in st.session_state.messages
             ],
             stream=True,
+
+
+print(response.choices[0].message.content)
+
+            
         )
 
         # Stream the response to the chat using `st.write_stream`, then store it in 
